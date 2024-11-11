@@ -4,48 +4,47 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+-- Packer can manage itself
+use 'wbthomason/packer.nvim'
 
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use('windwp/nvim-autopairs')
-
-
-  use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
-
-  use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('nvim-treesitter/playground')
-
-  use('nvim-lua/plenary.nvim')
-  use('ThePrimeagen/harpoon')
-  use('mbbill/undotree')
-  use('tpope/vim-fugitive')
 use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
+  'nvim-telescope/telescope.nvim', tag = '0.1.5',
+  requires = { {'nvim-lua/plenary.nvim'} }
+}
+use('windwp/nvim-autopairs')
 
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
+use { "catppuccin/nvim", as = "catppuccin" }
+
+use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+use('nvim-treesitter/playground')
+use('nvim-lua/plenary.nvim')
+
+-- Prime shit
+
+use('ThePrimeagen/vim-be-good')
+use('ThePrimeagen/harpoon')
+
+use('mbbill/undotree')
+use('tpope/vim-fugitive')
+
+--- Lsp
+
+use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v1.x',
+  requires = {
+    -- LSP Support
+    {'neovim/nvim-lspconfig'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-buffer'},
+    {'hrsh7th/cmp-path'},
+    {'saadparwaiz1/cmp_luasnip'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'hrsh7th/cmp-nvim-lua'},
 
 		  -- Snippets
 		  {'L3MON4D3/LuaSnip'},
@@ -53,10 +52,15 @@ use {
 	  }
   }
 
+  -- this is the colorscheme I use
+
+  use('ajmwagar/vim-deus')
+  use('ramojus/mellifluous.nvim')
+  use('Yazeed1s/oh-lucy.nvim')
+  -- end colorschemes 
+
   use('mattn/emmet-vim')
-  use('mfussenegger/nvim-dap')
-  use('theHamsta/nvim-dap-virtual-text')
-  use('rcarriga/nvim-dap-ui')
 
-
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use("lervag/vimtex")
 end)
