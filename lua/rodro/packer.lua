@@ -7,19 +7,35 @@ return require('packer').startup(function(use)
 -- Packer can manage itself
 use 'wbthomason/packer.nvim'
 
+use({
+    'MeanderingProgrammer/render-markdown.nvim',
+    after = { 'nvim-treesitter' },
+    requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+    -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+    config = function()
+        require('render-markdown').setup({})
+    end,
+})
+
 use {
   'nvim-telescope/telescope.nvim', tag = '0.1.5',
   requires = { {'nvim-lua/plenary.nvim'} }
 }
 use('windwp/nvim-autopairs')
 
-use { "catppuccin/nvim", as = "catppuccin" }
-
 use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 use('nvim-treesitter/playground')
 use('nvim-lua/plenary.nvim')
 
 -- Prime shit
+use({
+  'rose-pine/neovim',
+  as = 'rose-pine',
+  config = function()
+    vim.cmd("colorscheme rose-pine")
+  end
+})
 
 use('ThePrimeagen/vim-be-good')
 use('ThePrimeagen/harpoon')

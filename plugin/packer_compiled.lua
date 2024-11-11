@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  catppuccin = {
-    loaded = true,
-    path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -151,6 +146,12 @@ _G.packer_plugins = {
     path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/start/mellifluous.nvim",
     url = "https://github.com/ramojus/mellifluous.nvim"
   },
+  ["mini.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/opt/mini.nvim",
+    url = "https://github.com/echasnovski/mini.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -191,6 +192,20 @@ _G.packer_plugins = {
     path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["render-markdown.nvim"] = {
+    config = { "\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/opt/render-markdown.nvim",
+    url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+  },
+  ["rose-pine"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0" },
+    loaded = true,
+    path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/rodrigoaldegherizarateromero/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -228,6 +243,19 @@ time([[Defining packer_plugins]], false)
 time([[Setup for markdown-preview.nvim]], true)
 try_loadstring("\27LJ\2\n=\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\2\0\0\rmarkdown\19mkdp_filetypes\6g\bvim\0", "setup", "markdown-preview.nvim")
 time([[Setup for markdown-preview.nvim]], false)
+-- Config for: rose-pine
+time([[Config for rose-pine]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "rose-pine")
+time([[Config for rose-pine]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd render-markdown.nvim ]]
+
+-- Config for: render-markdown.nvim
+try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0", "config", "render-markdown.nvim")
+
+time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
